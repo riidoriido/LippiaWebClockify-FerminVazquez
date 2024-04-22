@@ -7,8 +7,8 @@
 		<version>3.3.0.0</version>
 	</parent>
 
-	<groupId>Lippia-Web-Example-Project</groupId>
-	<artifactId>LippiaWebExampleProject</artifactId>
+	<groupId>Clockify-LippiaWeb-FV-AAT</groupId>
+	<artifactId>Clockify-LippiaWeb-FV-AAT</artifactId>
 	<version>1.0.0</version>
 	<name>crowdar_automation_web</name>
 
@@ -35,7 +35,7 @@
 		<crowdar.cucumber.option>src/test/resources/web/features ${cucumber.hooks} ${cucumber.stepsDefinitions} --tags 'not @Ignore' --tags ${cucumber.tags} ${cucumber.report}</crowdar.cucumber.option>
 
 		<!-- client project custom properties -->
-		<web-app.url>https://clockify.me/es</web-app.url>
+		<web-app.url>https://clockify.me</web-app.url>
 
 	</properties>
 	<profiles>
@@ -149,6 +149,7 @@
 			<artifactId>zstd-jni</artifactId>
 			<version>1.5.5-11</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<filters>
