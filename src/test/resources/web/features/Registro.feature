@@ -3,13 +3,13 @@ Feature: Registro
 
     Background:
         Given the user opens the browser and navigates to "https://clockify.me/"
-        And the user clicks "Sign Up Free"
+        And the user clicks "link" "Sign Up Free"
 
     @SuccessfulRegister @Ignore
     Scenario: Successful registration
         When the user types "alguien@ejemplo.com"
         And the user clicks "termsOfUse"
-        And the user clicks "CONTINUE WITH EMAIL"
+        And the user clicks "button" "CONTINUE WITH EMAIL"
         And the user types the verification code
         Then the user is logged in to Clockify and can see the Timetracker
 
@@ -23,7 +23,7 @@ Feature: Registro
     @FailedRegister @Ignore
     Scenario: Failed register caused by missing email
         When the user skips the email field
-        And the user clicks ToS checkbox
+        And the user clicks "termsOfUse"
         Then the button "continue with email" is not clickeable
 
     @FailedRegister @Smoke
@@ -35,7 +35,7 @@ Feature: Registro
     @SuccessfulRegister @Smoke
     Scenario: Register with Google
         When the user clicks "termsOfUse"
-        And the user clicks "Continue with google"
+        And the user clicks "button" "Continue with google"
         And the user choses the account used to log in
         Then the user is logged in to Clockify and can see the Timetracker
 
