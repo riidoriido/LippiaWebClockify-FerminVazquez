@@ -11,10 +11,10 @@ Feature: Timetracker
     And the user clicks on the button with text " Add "
     Then the user can see the message "Time entry has been created"
     Examples:
-      | task          | time     |
+      | task  | time     |
       | task_ | 01:00:00 |
 
-  @SuccessfulTimetracker
+  @SuccessfulTimetracker @Smoke
   Scenario:  Successful time entry delete
     When the user deploys the dropdown on the selected entry
     And the user clicks on the link with text " Delete "

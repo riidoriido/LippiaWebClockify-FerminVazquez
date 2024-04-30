@@ -10,17 +10,17 @@ public class LoginSteps extends PageSteps {
         LoginService.validateLoginError(errorMsg);
     }
 
-    @And("the user clicks the Log In button")
+    @And("the user clicks the Log In button$")
     public void theUserClicksTheLogInButton() {
         LoginService.userClicksLoginButton();
     }
 
-    @And("the user deploys the user dropdown")
+    @And("the user deploys the user dropdown$")
     public void theUserDeploysTheUserDropdown() {
         LoginService.deployUserDropDown();
     }
 
-    @Then("the user returns to the login screen")
+    @Then("the user returns to the login screen$")
     public void theUserReturnsToTheLoginScreen() {
         LoginService.isOnLoginScreen();
     }

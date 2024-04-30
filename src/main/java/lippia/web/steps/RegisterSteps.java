@@ -16,7 +16,7 @@ public class RegisterSteps extends PageSteps {
         RegisterService.inputEmailRegister(inputText);
     }
 
-    @When("the user leaves an empty email field")
+    @When("the user leaves an empty email field$")
     public void theUserLeavesAnEmptyEmailField() {
         RegisterService.emptyInputEmail();
     }

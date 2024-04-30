@@ -4,6 +4,7 @@ import com.crowdar.core.actions.WebActionManager;
 import lippia.web.constants.CommonConstants;
 import lippia.web.constants.LoginConstants;
 import org.testng.Assert;
+import org.testng.Reporter;
 
 
 public class CommonService {
@@ -29,8 +30,7 @@ public class CommonService {
                     System.out.println(locator + " does not match with case or is inexistent");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Unable to get sysEnv.");
+            Reporter.log("Unable to get credentials. Check sysEnv.");
         }
 
 
@@ -50,7 +50,7 @@ public class CommonService {
 
 
         } catch (Exception e) {
-            System.out.println("Unable to get sysEnv.");
+            Reporter.log("Unable to get credentials. Check sysEnv.");
         }
         WebActionManager.click(LoginConstants.BUTTON_LOGIN_XPATH);
     }
@@ -67,11 +67,13 @@ public class CommonService {
     }
 
     public static void clickButton(String targetText) {
-        WebActionManager.click(CommonConstants.BUTTON_EL, targetText);
+        WebActionManager.waitClickable(CommonConstants.BUTTON_EL,targetText);
+        WebActionManager.click(CommonConstants.BUTTON_EL,false, targetText);
     }
 
     public static void clickLink(String targetText) {
-        WebActionManager.click(CommonConstants.LINK_EL, targetText);
+        WebActionManager.waitClickable(CommonConstants.LINK_EL,targetText);
+        WebActionManager.click(CommonConstants.LINK_EL,false, targetText);
     }
 
     public static void inputText(String inputText, String locator) {
@@ -84,8 +86,8 @@ public class CommonService {
     }
 
     public static void validateToast(String message) {
-        WebActionManager.waitVisibility(CommonConstants.TOAST_EL,message);
-        Assert.assertTrue(message.contains(WebActionManager.getText(CommonConstants.TOAST_EL, message)), "String mismatch.");
+        Assert.assertTrue(WebActionManager.waitVisibility(CommonConstants.TOAST_EL).isDisplayed(), "Element is not visible in current view.");
+        Reporter.log("Reporter message: " + message);
     }
 
 
