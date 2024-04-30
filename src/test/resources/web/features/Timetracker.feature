@@ -2,22 +2,21 @@
 Feature: Timetracker
 
   Background:
-    Given the user performs a successful login in Clockify App
+    Given the user logs in to Clockify
 
   @SuccessfulTimetracker @Smoke
   Scenario Outline: Successful timetracker entry
-    When the user types <task>
-    And the user clicks "button" "Project"
-    And the user types <time>
-    And the user clicks "button" "ADD"
+    When the user types a <task>
+    And the user types <time> as duration
+    And the user clicks on the button with text " Add "
     Then the user can see the message "Time entry has been created"
     Examples:
       | task          | time     |
-      | example_task_ | 01:00:00 |
+      | task_ | 01:00:00 |
 
-  @SuccessfulTimetracker @Smoke
+  @SuccessfulTimetracker
   Scenario:  Successful time entry delete
     When the user deploys the dropdown on the selected entry
-    And the user clicks "link" "delete"
-    And the user clicks "button" "DELETE"
+    And the user clicks on the link with text " Delete "
+    And the user clicks on the button with text " Delete "
     Then the user can see the message "Time entry has been deleted"

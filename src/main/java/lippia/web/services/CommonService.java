@@ -49,10 +49,16 @@ public class CommonService {
             WebActionManager.setInput(LoginConstants.INPUT_PASSWORD, passwordEnv);
 
 
-        } catch (Error e) {
+        } catch (Exception e) {
             System.out.println("Unable to get sysEnv.");
         }
         WebActionManager.click(LoginConstants.BUTTON_LOGIN_XPATH);
+    }
+
+    public static void autoLogin() {
+        navigateToClockify();
+        WebActionManager.click(CommonConstants.LINK_EL,"'Log in'");
+        loginToClockify();
     }
 
     public static void verifyLoggedIn() {
@@ -78,23 +84,8 @@ public class CommonService {
     }
 
     public static void validateToast(String message) {
-        Assert.assertEquals(message, WebActionManager.getText(CommonConstants.TOAST_EL, message));
-    }
-
-    public static void createRandomString(String concatString, int char_length, String targetText, String xpath) {
-        String charPool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        String randomString = "";
-
-        for (int i = 0; i < char_length; i++) {
-            int randomIndex = (int) (Math.random() * charPool.length());
-            char randomChar = charPool.charAt(randomIndex);
-            randomString += randomChar;
-        }
-
-        String locator = xpath.replace("%s", targetText);
-        WebActionManager.setInput(locator, concatString + randomString);
-        System.out.println(concatString + randomString);
-
+        WebActionManager.waitVisibility(CommonConstants.TOAST_EL,message);
+        Assert.assertTrue(message.contains(WebActionManager.getText(CommonConstants.TOAST_EL, message)), "String mismatch.");
     }
 
 

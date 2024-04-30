@@ -48,10 +48,14 @@ public class CommonSteps extends PageSteps {
         CommonService.inputText(inputText, locator);
     }
 
-    @Then("the user is logged in to Clockify and can see the Timetracker")
+    @Then("the user is logged in to Clockify and can see the Timetracker$")
     public void theUserIsLoggedInToClockifyAndCanSeeTheTimetracker() {
         CommonService.verifyLoggedIn();
     }
 
 
+    @Given("the user logs in to Clockify$")
+    public void theUserLogsInToClockify() {
+        CommonService.autoLogin();
+    }
 }
