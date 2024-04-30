@@ -10,7 +10,7 @@
 	<groupId>Clockify-LippiaWeb-FV-AAT</groupId>
 	<artifactId>Clockify-LippiaWeb-FV-AAT</artifactId>
 	<version>1.0.0</version>
-	<name>crowdar_automation_web</name>
+	<name>Clockify TP FV</name>
 
 	<packaging>jar</packaging>
 

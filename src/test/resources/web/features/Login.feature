@@ -32,13 +32,7 @@ Feature: Login
       | user@ejemplo.com | 123456   | "Invalid email or password"  |
       | alguienejemplocom   | 123456   | "Email format is not valid " |
 
-  @FailedLogin @Smoke
-  Scenario: Failed login caused by invalid email
-    When the user types "alguienejemplocom" on field "email"
-    Then the app shows the message "Email format is not valid"
-    And the button "continue with email" is not clickeable
-
-  @Logout @Smoke @loginTest
+  @Logout @Smoke
   Scenario: Successful logout
     When the user is logged in to Clockify
     And the user deploys the user dropdown

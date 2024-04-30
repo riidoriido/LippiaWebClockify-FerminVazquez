@@ -28,7 +28,8 @@ public class CommonService {
                 default:
                     System.out.println(locator + " does not match with case or is inexistent");
             }
-        } catch (Error e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Unable to get sysEnv.");
         }
 
@@ -73,7 +74,7 @@ public class CommonService {
 
     public static void buttonNotClickeable(String locator) {
         String buttonState = WebActionManager.getAttribute(CommonConstants.BUTTON_EL, "disabled", locator);
-        Assert.assertEquals(buttonState, "disabled");
+        Assert.assertTrue(Boolean.parseBoolean(buttonState), "Button is enabled.");
     }
 
     public static void validateToast(String message) {
