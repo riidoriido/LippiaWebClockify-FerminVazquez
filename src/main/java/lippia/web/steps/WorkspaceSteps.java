@@ -2,6 +2,7 @@ package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.*;
+import lippia.web.services.CommonService;
 import lippia.web.services.WorkspaceService;
 
 public class WorkspaceSteps extends PageSteps {
@@ -15,14 +16,9 @@ public class WorkspaceSteps extends PageSteps {
         WorkspaceService.verifyIsOnWorkspaceSettings();
 
     }
-    @And("the user types (.*) on the input field$")
-    public void userTypesWorkspaceName(String inputText){
-        WorkspaceService.typeNewWorkspaceName(inputText);
-
-    }
-    @And("the user types specifically a string with (.*) characters$")
-    public void userTypesIntCharString(int char_length){
-        WorkspaceService.generateWorkspaceName(char_length);
+    @And("the user types specifically a (.*) name with (.*) characters$")
+    public void userTypesIntCharString(String locator,int char_length){
+        CommonService.generateNameError(locator,char_length);
     }
 
     @And("the user returns returns to the listing$")

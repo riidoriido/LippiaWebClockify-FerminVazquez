@@ -12,6 +12,15 @@
 	<version>1.0.0</version>
 	<name>Clockify TP FV</name>
 
+	<developers>
+		<developer>
+			<id>riido</id>
+			<name>Fermin Vazquez</name>
+			<email>fv.shutter@gmail.com</email>
+			<timezone>Latam/Argentina</timezone>
+		</developer>
+	</developers>
+
 	<packaging>jar</packaging>
 
 	<properties>
@@ -28,7 +37,7 @@
 		<!-- cucumber options -->
 		<cucumber.stepsDefinitions>--glue / </cucumber.stepsDefinitions>
 		<cucumber.hooks>--glue	com/crowdar/bdd/cukes/hooks</cucumber.hooks>
-		<cucumber.tags>@workspaceTest</cucumber.tags>
+		<cucumber.tags>@WSmoke</cucumber.tags>
 		<pretty.plugin>--plugin pretty</pretty.plugin>
 		<cucumber.report>--plugin lippia.web.reporters.CucumberReporter:</cucumber.report>
 		<test-manager.report>--plugin lippia.web.reporters.TestManagerReporter:</test-manager.report>

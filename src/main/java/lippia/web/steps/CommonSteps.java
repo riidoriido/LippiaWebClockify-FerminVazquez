@@ -56,6 +56,11 @@ public class CommonSteps extends PageSteps {
 
     @Given("the user logs in to Clockify$")
     public void theUserLogsInToClockify() {
-        CommonService.autoLogin();
+    CommonService.fullLogin();
+    }
+
+    @And("the user clicks the sidebar link (.*)$")
+    public void theUserClicksTheSidebarLink(String targetText) {
+        CommonService.clickSidebar(targetText);
     }
 }

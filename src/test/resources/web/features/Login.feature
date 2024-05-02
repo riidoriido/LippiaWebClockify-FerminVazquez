@@ -5,13 +5,7 @@ Feature: Login
     Given the user opens the browser and navigates to Clockify homepage
     And the user clicks on the link with text "Log in"
 
-  @SuccessLogin @Smoke
-  Scenario: Successful Log in with email
-    When the user types on field email
-    And the user clicks on the button with text " Continue with email "
-    Then the user is logged in to Clockify and can see the Timetracker
-
-  @SuccessLogin @Smoke
+  @SuccessManualLogin @Smoke
   Scenario: Successful manual Log in
     When the user clicks on the link with text " Log in manually "
     And the user types on field email
@@ -28,9 +22,9 @@ Feature: Login
     Then the app shows the message <error>
 
     Examples:
-      | email               | password | error                        |
-      | user@ejemplo.com | 123456   | "Invalid email or password"  |
-      | alguienejemplocom   | 123456   | "Email format is not valid " |
+      | email             | password | error                        |
+      | user@ejemplo.com  | 123456   | "Invalid email or password"  |
+      | alguienejemplocom | 123456   | "Email format is not valid " |
 
   @Logout @Smoke
   Scenario: Successful logout

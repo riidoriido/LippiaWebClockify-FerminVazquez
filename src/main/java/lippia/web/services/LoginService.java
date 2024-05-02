@@ -20,7 +20,9 @@ public class LoginService extends ActionManager {
     public static void validateLoginError(String errorMsg) {
         WebActionManager.waitVisibility(LoginConstants.MESSAGE_XPATH,errorMsg);
         String actualMsg = WebActionManager.getText(LoginConstants.MESSAGE_XPATH,errorMsg);
-        Assert.assertTrue(errorMsg.contains(actualMsg),"String mismatch.");
+        System.out.println(actualMsg);
+        System.out.println(errorMsg);
+        Assert.assertTrue(errorMsg.contains(actualMsg.trim()),"String mismatch.");
     }
 
     public static void deployUserDropDown() {

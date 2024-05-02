@@ -10,13 +10,22 @@ public class TimetrackerSteps extends PageSteps {
         TimetrackerService.userTypesTask(inputText);
     }
 
-    @And("the user types (.*) as duration$")
-    public void theUserTypesTimeAsDuration(String inputText) {
-        TimetrackerService.userTypesDuration(inputText);
+    @And("the user completes the (.*) (.*) range$")
+    public void theUserCompletesTheHourRange(String start,String end) {
+        TimetrackerService.userHourRange(start,end);
     }
+
+    @And("the user selects desired (.*)$")
+    public void theUserSelectsDesiredDate(String date) {
+        TimetrackerService.userPicksProjectDate(date);
+    }
+
 
     @When("the user deploys the dropdown on the selected entry$")
     public void theUserDeploysTheDropdownOnTheSelectedEntry() {
         TimetrackerService.userClickDropdownProject();
     }
+
+
+
 }
