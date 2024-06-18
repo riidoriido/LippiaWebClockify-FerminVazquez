@@ -1,5 +1,6 @@
 package lippia.web.services;
 
+import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.WebActionManager;
 import lippia.web.constants.CommonConstants;
 import lippia.web.constants.LoginConstants;
@@ -15,11 +16,11 @@ public class CommonService {
         WebActionManager.navigateTo("https://clockify.me");
     }
 
-    public static String[] getSysEnv() {
+    public static String[] getAuthCred() {
         String[] credentials = new String[2];
         try {
-            String userEnv = System.getenv("clockifyUSR");
-            String passwordEnv = System.getenv("clockifyPSW");
+            String userEnv = PropertyManager.getProperty("clockify.id");
+            String passwordEnv = PropertyManager.getProperty("clockify.auth");
             credentials[0] = userEnv;
             credentials[1] = passwordEnv;
 
@@ -31,7 +32,7 @@ public class CommonService {
     }
 
     public static void loginDataFull(String locator) {
-        String[] credentials = getSysEnv();
+        String[] credentials = getAuthCred();
         switch (locator) {
             case "email":
                 WebActionManager.waitVisibility(LoginConstants.INPUT_EMAIL);
@@ -45,7 +46,7 @@ public class CommonService {
     }
 
     public static void loginToClockify() {
-        String[] credentials = getSysEnv();
+        String[] credentials = getAuthCred();
         WebActionManager.click(LoginConstants.LOGIN_BTN_BY_TEXT, " Log in manually ");
         WebActionManager.setInput(LoginConstants.INPUT_EMAIL, String.valueOf(credentials[0]));
         WebActionManager.setInput(LoginConstants.INPUT_PASSWORD, String.valueOf(credentials[1]));
