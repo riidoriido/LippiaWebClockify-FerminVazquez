@@ -2,6 +2,7 @@ package lippia.web.services;
 
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.WebActionManager;
+import com.crowdar.driver.DriverManager;
 import lippia.web.constants.CommonConstants;
 import lippia.web.constants.LoginConstants;
 import lippia.web.constants.ProjectsConstants;
@@ -110,10 +111,10 @@ public class CommonService {
     public static void typeNewName(String inputText, String locator) {
         switch (locator) {
             case "project":
-                WebActionManager.setInput(ProjectsConstants.PROJECT_NEW_INPUT, inputText + CommonService.generateRandomString(5), true, false);
+                WebActionManager.setInput(ProjectsConstants.PROJECT_NEW_INPUT, inputText, true, false);
                 break;
             case "workspace":
-                WebActionManager.setInput(WorkspaceConstants.WORKSPACE_NEW_INPUT, inputText + CommonService.generateRandomString(5), true, false);
+                WebActionManager.setInput(WorkspaceConstants.WORKSPACE_NEW_INPUT, inputText , true, false);
                 break;
             default:
                 System.out.println(locator + " is not a valid case.");
@@ -133,6 +134,16 @@ public class CommonService {
                 break;
             default:
                 System.out.println(locator + " is not a valid case.");
+        }
+    }
+
+    public static void changeWorkspace() {
+        String activeWorkspace = WebActionManager.getText(WorkspaceConstants.ACTIVE_WORKSPACE_TEXT);
+        if (!activeWorkspace.equals("tpFinal_AAT")) {
+            WebActionManager.waitClickable(WorkspaceConstants.DOTTED_WORKSPACE_SETTINGS_DEPLOY).click();
+            WebActionManager.waitClickable(WorkspaceConstants.DROPDOWN_TOPBAR_MANAGE_WORKSPACES).click();
+            WebActionManager.click(WorkspaceConstants.LAST_WORKSPACE_IN_LIST);
+            DriverManager.getDriverInstance().navigate().back();
         }
     }
 }

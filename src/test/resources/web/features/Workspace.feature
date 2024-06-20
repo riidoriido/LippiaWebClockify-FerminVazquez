@@ -9,7 +9,7 @@ Feature: Workspace
     @WorkspaceSuccessfulCreation @Smoke
     Scenario: Successful workspace creation
         When the user clicks on the button with text " Create new "
-        And the user types workspace_ on the workspace name input field
+        And the user types tpFinal_AAT on the workspace name input field
         And the user clicks on the button with text " Create "
         Then the user can see the message "Workspace has been created."
 
