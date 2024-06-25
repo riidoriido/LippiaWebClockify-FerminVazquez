@@ -83,13 +83,6 @@ public class ApiHelperService {
         return workspaceID;
     }
 
-    public static String checkForProject() {
-        Response projectsList = sendGetRequestAndSaveResponse("/workspaces/" + checkForWorkspace() + "/projects");
-        String responseBody = projectsList.getBody().asString();
-        JsonPath projectResponse = new JsonPath(responseBody);
-        return projectResponse.getString("find { it.name == 'projectForPDF' }.id");
-    }
-
     public static void checkForProjectAndDelete() {
         Response projectsList = sendGetRequestAndSaveResponse("/workspaces/" + checkForWorkspace() + "/projects");
         String responseBody = projectsList.getBody().asString();
