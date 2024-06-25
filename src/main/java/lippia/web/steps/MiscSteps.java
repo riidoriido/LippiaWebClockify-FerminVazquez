@@ -2,10 +2,15 @@ package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.*;
+import lippia.web.services.ApiHelperService;
 import lippia.web.services.MiscService;
 
 public class MiscSteps extends PageSteps {
 
+    @And("create entries by api")
+    public void createEntriesByApi() {
+        ApiHelperService.setupTimeEntries();
+    }
 
     @And("the user clicks on Range to open the Calendar")
     public void theUserClicksOnRangeToOpenTheCalendar() throws InterruptedException {
@@ -18,7 +23,7 @@ public class MiscSteps extends PageSteps {
     }
 
     @And("the user clicks on Export")
-    public void theUserClicksOnExport() {
+    public void theUserClicksOnExport() throws InterruptedException {
         MiscService.clickExport();
     }
 
@@ -30,5 +35,10 @@ public class MiscSteps extends PageSteps {
     @Then("the app shows a Loading popup and the file is downloaded")
     public void theAppShowsALoadingPopupAndTheFileIsDownloaded() {
         MiscService.verifyLoaderPresence();
+    }
+
+    @And("created entries are deleted by api")
+    public void createdEntriesAreDeletedByApi() {
+        ApiHelperService.cleanUpEntriesAfterTest();
     }
 }

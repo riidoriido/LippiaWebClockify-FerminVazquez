@@ -6,6 +6,8 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import java.util.List;
+
 
 public class ApiHelperService {
     public static final String baseUrl = "https://api.clockify.me/api/v1";
@@ -17,7 +19,7 @@ public class ApiHelperService {
                 .header("Content-Type", "application/json")
                 .header("x-api-key", apiKey)
                 .body(body)
-                .post(baseUrl+endpoint)
+                .post(baseUrl + endpoint)
                 .then().extract().response();
     }
 
@@ -27,7 +29,7 @@ public class ApiHelperService {
                 .header("Content-Type", "application/json")
                 .header("x-api-key", apiKey)
                 .body(body)
-                .put(baseUrl+endpoint);
+                .put(baseUrl + endpoint);
     }
 
     public static Response sendGetRequest(String endpoint) {
@@ -36,7 +38,7 @@ public class ApiHelperService {
                 .header("Content-Type", "application/json")
                 .header("x-api-key", apiKey)
                 .when()
-                .get(baseUrl+endpoint);
+                .get(baseUrl + endpoint);
     }
 
     public static Response sendDeleteRequest(String endpoint) {
@@ -44,7 +46,16 @@ public class ApiHelperService {
                 .given()
                 .header("Content-Type", "application/json")
                 .header("x-api-key", apiKey)
-                .delete(baseUrl+endpoint);
+                .delete(baseUrl + endpoint);
+    }
+
+    public static Response sendDeleteRequestWithParams(String endpoint, String param, List<String> paramValues) {
+        return RestAssured
+                .given()
+                .header("Content-Type", "application/json")
+                .header("x-api-key", apiKey)
+                .queryParam(param, paramValues)
+                .delete(baseUrl + endpoint);
     }
 
     public static Response sendGetRequestAndSaveResponse(String endpoint) {
@@ -53,7 +64,7 @@ public class ApiHelperService {
                 .header("Content-Type", "application/json")
                 .header("x-api-key", apiKey)
                 .when()
-                .get(baseUrl+endpoint)
+                .get(baseUrl + endpoint)
                 .then()
                 .extract()
                 .response();
@@ -81,8 +92,15 @@ public class ApiHelperService {
         return workspaceID;
     }
 
-    public static void checkForProject() {
-        Response projectsList = sendGetRequestAndSaveResponse("/workspaces/"+checkForWorkspace()+"/projects");
+    public static String checkForProject() {
+        Response projectsList = sendGetRequestAndSaveResponse("/workspaces/" + checkForWorkspace() + "/projects");
+        String responseBody = projectsList.getBody().asString();
+        JsonPath projectResponse = new JsonPath(responseBody);
+        return projectResponse.getString("find { it.name == 'projectForPDF' }.id");
+    }
+
+    public static void checkForProjectAndDelete() {
+        Response projectsList = sendGetRequestAndSaveResponse("/workspaces/" + checkForWorkspace() + "/projects");
         String responseBody = projectsList.getBody().asString();
         JsonPath projectResponse = new JsonPath(responseBody);
         boolean projectExists = projectResponse.getBoolean("find { it.name == 'tpFinalProject' } != null");
@@ -91,15 +109,43 @@ public class ApiHelperService {
         if (projectExists) {
             projectID = projectResponse.getString("find { it.name == 'tpFinalProject' }.id");
             String body = "{\"archived\":true}";
-            sendPutRequest("/workspaces/"+checkForWorkspace()+"/projects/"+projectID,body);
-            sendDeleteRequest("/workspaces/"+checkForWorkspace()+"/projects/"+projectID);
+            sendPutRequest("/workspaces/" + checkForWorkspace() + "/projects/" + projectID, body);
+            sendDeleteRequest("/workspaces/" + checkForWorkspace() + "/projects/" + projectID);
             System.out.println("Successfully deleted project.");
-        } else{
+        } else {
             System.out.println("Project not found.");
         }
     }
 
     public static void setupTimeEntries() {
+        String endpoint = "/workspaces/" + checkForWorkspace() + "/time-entries";
+        String[] requestBodies = {
+                "{\"billable\": true, \"description\": \"timeEntry-tpFinal\",  \"end\": \"2024-06-03T16:30:00Z\",  \"projectId\":null,  \"start\": \"2024-06-03T08:00:00Z\"}",
+                "{\"billable\": true, \"description\": \"timeEntry-tpFinal\",  \"end\": \"2024-06-04T16:30:00Z\",  \"projectId\":null,  \"start\": \"2024-06-04T08:00:00Z\"}",
+                "{\"billable\": true, \"description\": \"timeEntry-tpFinal\",  \"end\": \"2024-06-05T16:30:00Z\",  \"projectId\":null,  \"start\": \"2024-06-05T08:00:00Z\"}",
+                "{\"billable\": true, \"description\": \"timeEntry-tpFinal\",  \"end\": \"2024-06-06T16:30:00Z\",  \"projectId\":null,  \"start\": \"2024-06-06T08:00:00Z\"}",
+                "{\"billable\": true, \"description\": \"timeEntry-tpFinal\",  \"end\": \"2024-06-07T16:30:00Z\",  \"projectId\":null,  \"start\": \"2024-06-07T08:00:00Z\"}",
+                "{\"billable\": true, \"description\": \"timeEntry-tpFinal\",  \"end\": \"2024-06-09T16:30:00Z\",  \"projectId\":null,  \"start\": \"2024-06-09T08:00:00Z\"}"
+        };
+        for (String requestBody : requestBodies) {
+            sendPostRequest(endpoint, requestBody);
+        }
+    }
 
+    public static void cleanUpEntriesAfterTest() {
+        String endpoint = "/workspaces/" + checkForWorkspace() + "/user/65383a07205d0441c5269f46/time-entries";
+        Response entriesList = sendGetRequestAndSaveResponse(endpoint);
+        String responseBody = entriesList.getBody().asString();
+        JsonPath entryResponse = new JsonPath(responseBody);
+        boolean entriesExists = entryResponse.getBoolean("find { it.description.contains('timeEntry-tpFinal') } != null");
+
+        if (entriesExists) {
+            List<String> timeEntryIds = entryResponse.getList("findAll { it.description.contains('timeEntry-tpFinal') }.id");
+            System.out.println(timeEntryIds);
+            sendDeleteRequestWithParams(endpoint, "time-entry-ids", timeEntryIds);
+            System.out.println("Successfully deleted the following entries: " + CommonService.parseListToString(timeEntryIds) + ".");
+        } else {
+            System.out.println("No entries found on workspace" + checkForWorkspace() + ".");
+        }
     }
 }

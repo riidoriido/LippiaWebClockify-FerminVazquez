@@ -1,7 +1,6 @@
 package lippia.web.services;
 
 import com.crowdar.core.actions.WebActionManager;
-import com.crowdar.driver.DriverManager;
 import lippia.web.constants.MiscConstants;
 import org.testng.Assert;
 
@@ -20,7 +19,8 @@ public class MiscService {
         WebActionManager.waitClickable(MiscConstants.REPORTS_DATE_PICKER_RANGE,date).click();
     }
 
-    public static void clickExport() {
+    public static void clickExport() throws InterruptedException {
+        Thread.sleep(2000);
         WebActionManager.waitClickable(MiscConstants.REPORTS_EXPORT_DROPDOWN).click();
     }
 
