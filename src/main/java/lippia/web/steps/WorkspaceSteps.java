@@ -7,23 +7,23 @@ import lippia.web.services.WorkspaceService;
 
 public class WorkspaceSteps extends PageSteps {
     @And("the user deploys the workspaces dropdown$")
-    public void userDeploysWorkspaceDropdown() throws InterruptedException {
+    public void userDeploysWorkspaceDropdown() {
         WorkspaceService.deployWorkspaceDropdown();
     }
 
-    @And("the user is on Workspace Settings$")
-    public void theUserIsOnWorkspaceSettings() {
-        WorkspaceService.verifyIsOnWorkspaceSettings();
-
+    @And("the user clicks on Manage Workspaces")
+    public void theUserClicksOnManageWorkspaces() {
+        WorkspaceService.manageWorkspaces();
     }
+
     @And("the user types specifically a (.*) name with (.*) characters$")
-    public void userTypesIntCharString(String locator,int char_length){
-        CommonService.generateNameError(locator,char_length);
+    public void userTypesIntCharString(String locator, int char_length) {
+        CommonService.generateNameError(locator, char_length);
     }
 
-    @And("the user returns returns to the listing$")
+    @And("the user returns to the listing$")
     public void theUserReturnsReturnsToTheListing() {
-        WorkspaceService.verifyListingPresence();
+        WorkspaceService.returnToWorkspaceList();
     }
 
     @And("the user types the required DELETE keyword$")
@@ -36,5 +36,8 @@ public class WorkspaceSteps extends PageSteps {
         WorkspaceService.deleteWorkspace();
     }
 
-
+    @And("rollback workspace creation")
+    public void rollbackWorkspaceCreation() throws InterruptedException {
+        WorkspaceService.resetWorkspaceCreated();
+    }
 }

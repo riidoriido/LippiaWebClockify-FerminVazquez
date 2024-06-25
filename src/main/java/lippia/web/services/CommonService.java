@@ -79,11 +79,11 @@ public class CommonService {
 
     public static void inputText(String inputText, String locator) {
         if (locator.equals("email")) {
-            WebActionManager.setInput(CommonConstants.INPUT_EL, inputText, true, locator);
+            WebActionManager.setInput(CommonConstants.INPUT_EL, inputText, true,false, locator);
             WebActionManager.click(CommonConstants.INPUT_EL, locator);
 
         } else {
-            WebActionManager.setInput(CommonConstants.INPUT_EL, inputText + generateRandomString(5), true, locator);
+            WebActionManager.setInput(CommonConstants.INPUT_EL, inputText ,true ,false, locator);
         }
     }
 
@@ -140,8 +140,9 @@ public class CommonService {
         String activeWorkspace = WebActionManager.getText(WorkspaceConstants.ACTIVE_WORKSPACE_TEXT);
         if (!activeWorkspace.equals("tpFinal_AAT")) {
             WorkspaceService.deployWorkspaceDropdown();
-            WebActionManager.waitClickable(WorkspaceConstants.DROPDOWN_TOPBAR_MANAGE_WORKSPACES).click();
-            WebActionManager.click(WorkspaceConstants.LAST_WORKSPACE_IN_LIST);
+            WorkspaceService.manageWorkspaces();
+            WebActionManager.waitClickable(WorkspaceConstants.PRIORITY_WORKSPACE_IN_LIST).click();
+            Thread.sleep(1500);
             DriverManager.getDriverInstance().navigate().back();
         }
     }

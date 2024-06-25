@@ -1,19 +1,21 @@
 package lippia.web.services;
 
 import com.crowdar.core.actions.WebActionManager;
+import com.crowdar.driver.DriverManager;
+import lippia.web.constants.CommonConstants;
+import lippia.web.constants.MiscConstants;
 import lippia.web.constants.WorkspaceConstants;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
 
 public class WorkspaceService {
-    public static void deployWorkspaceDropdown() throws InterruptedException {
-        try {
-            WebActionManager.click(WorkspaceConstants.WORKSPACE_DROPDOWN,false);
-        } catch (Exception e) {
-            Thread.sleep(500);
+    public static void deployWorkspaceDropdown(){
             WebActionManager.waitClickable(WorkspaceConstants.WORKSPACE_DROPDOWN).click();
-            Reporter.log("Element needed explicit wait to be clickable. (Element click intercepted)");
-        }
+    }
+
+    public static void manageWorkspaces() {
+        WebActionManager.waitVisibility(WorkspaceConstants.DROPDOWN_TOPBAR_MANAGE_WORKSPACES).click();
     }
 
     public static void deleteWorkspace() {
@@ -28,10 +30,18 @@ public class WorkspaceService {
         WebActionManager.setInput(WorkspaceConstants.WORKSPACE_DELETE_INPUT,"DELETE");
     }
 
-    public static void verifyIsOnWorkspaceSettings() {
-        Assert.assertTrue(WebActionManager.isVisible(WorkspaceConstants.WORKSPACE_SETTINGS), "Element is not found in current view.");
-    }
-    public static void verifyListingPresence(){
+    public static void returnToWorkspaceList(){
+        DriverManager.getDriverInstance().navigate().back();
         Assert.assertTrue(WebActionManager.isVisible(WorkspaceConstants.WORKSPACE_LISTING), "Element is not found in current view.");
+    }
+
+    public static void resetWorkspaceCreated() throws InterruptedException {
+        CommonService.changeWorkspace();
+        WebActionManager.waitInvisibility(CommonConstants.TOAST_EL);
+        WebActionManager.click(WorkspaceConstants.DELETE_WORKSPACE_BUTTON,true,"10");
+        typeDeleteOnInput();
+        CommonService.clickButton("' Delete Workspace '");
+
+
     }
 }

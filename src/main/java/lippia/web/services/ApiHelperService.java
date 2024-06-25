@@ -32,15 +32,6 @@ public class ApiHelperService {
                 .put(baseUrl + endpoint);
     }
 
-    public static Response sendGetRequest(String endpoint) {
-        return RestAssured
-                .given()
-                .header("Content-Type", "application/json")
-                .header("x-api-key", apiKey)
-                .when()
-                .get(baseUrl + endpoint);
-    }
-
     public static Response sendDeleteRequest(String endpoint) {
         return RestAssured
                 .given()
