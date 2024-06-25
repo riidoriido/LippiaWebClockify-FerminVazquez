@@ -15,6 +15,7 @@ Feature: Timetracker
       | task  | date | start | end  |
       | task_ | 9    | 8  | 16 |
 
+
   @Smoke
   Scenario:  Successful time entry delete
     When the user deploys the dropdown on the selected entry

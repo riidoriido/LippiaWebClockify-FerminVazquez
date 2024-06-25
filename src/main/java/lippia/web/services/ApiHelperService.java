@@ -59,6 +59,7 @@ public class ApiHelperService {
                 .response();
     }
 
+
     public static String checkForWorkspace() {
         Response workspacesList = sendGetRequestAndSaveResponse("/workspaces");
         String responseBody = workspacesList.getBody().asString();
@@ -96,5 +97,9 @@ public class ApiHelperService {
         } else{
             System.out.println("Project not found.");
         }
+    }
+
+    public static void setupTimeEntries() {
+
     }
 }

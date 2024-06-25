@@ -35,4 +35,6 @@ public class WorkspaceSteps extends PageSteps {
     public void theUserClicksXButtonOnWorkspace() {
         WorkspaceService.deleteWorkspace();
     }
+
+
 }
