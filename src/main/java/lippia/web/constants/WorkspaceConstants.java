@@ -2,8 +2,6 @@ package lippia.web.constants;
 
 public class WorkspaceConstants {
     public static final String WORKSPACE_DROPDOWN = "xpath://app-topbar-options";
-    public static final String WORKSPACE_DROPDOWN_MANAGE = "xpath://app-topbar-options//a[@routerlink='/workspaces']";
-    public static final String WORKSPACE_SETTINGS_TITLE = "xpath://h1[text()='Workspace settings']";
     public static final String WORKSPACE_LISTING = "xpath://span[text()='Workspaces']";
     public static final String WORKSPACE_NEW_INPUT = "xpath://create-workspace-modal//input[@formControlName='name']";
     public static final String WORKSPACE_NEW_INPUT_FOCUS_CLEAR = "xpath://create-workspace-modal";

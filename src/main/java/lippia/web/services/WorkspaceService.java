@@ -3,9 +3,7 @@ package lippia.web.services;
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.driver.DriverManager;
 import lippia.web.constants.CommonConstants;
-import lippia.web.constants.MiscConstants;
 import lippia.web.constants.WorkspaceConstants;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
 
