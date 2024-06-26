@@ -28,7 +28,8 @@ public class MiscService {
         WebActionManager.waitVisibility(MiscConstants.REPORTS_EXPORT_DROPDOWN_PDF).click();
     }
 
-    public static void verifyLoaderPresence() {
+    public static void verifyLoaderPresence() throws InterruptedException {
         Assert.assertTrue(WebActionManager.isVisible(MiscConstants.REPORTS_LOADER));
+        Thread.sleep(3500); //wait for download to start
     }
 }

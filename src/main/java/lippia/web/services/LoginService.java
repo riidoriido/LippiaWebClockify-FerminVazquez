@@ -28,6 +28,10 @@ public class LoginService extends ActionManager {
     public static void deployUserDropDown() {
         WebActionManager.click(LoginConstants.USER_DROPDOWN,false);
     }
+
+    public static void clickOnLogout() {
+        WebActionManager.waitVisibility(LoginConstants.LOGOUT_BUTTON_NEW).click();
+    }
     public static void isOnLoginScreen() {
         WebActionManager.waitVisibility(LoginConstants.LOGIN_FORM_TITLE);
         Assert.assertTrue(WebActionManager.isVisible(LoginConstants.LOGIN_FORM_TITLE),"Login screen not visible.");

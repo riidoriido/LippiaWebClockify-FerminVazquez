@@ -3,7 +3,6 @@ package com.crowdar;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import lippia.web.services.APIManagementService;
-import lippia.web.services.WorkspaceService;
 
 public class Hooks {
 
@@ -17,18 +16,12 @@ public class Hooks {
         APIManagementService.cleanUpEntriesAfterTest();
     }
 
-    @After(value = "@CleanupWorkspaceCreation")
-    public void cleanupCreatedWorkspace() throws InterruptedException {
-        WorkspaceService.resetWorkspaceCreated();
-    }
-
     @Before(value = "@setupProjectCreation")
     public void setupProjectCreation() {
         APIManagementService.checkForWorkspace();
-        APIManagementService.checkForProjectAndDelete();
     }
 
-    @After(value = "setupProjectCreation")
+    @After(value = "@setupProjectCreation")
     public void cleanupProjectCreation() {
         APIManagementService.checkForProjectAndDelete();
     }

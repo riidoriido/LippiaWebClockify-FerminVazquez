@@ -14,7 +14,7 @@ Feature: Projects
     And the user clicks on the button with text " Create "
     Then the user can see the message " Project has been created "
 
-  @FailureProjects @Smoke
+  @FailureProjects
   Scenario: Failed project creation (String does not meet requirements)
     When the user clicks on the button with text " Create new "
     And the user types specifically a project name with 255 characters

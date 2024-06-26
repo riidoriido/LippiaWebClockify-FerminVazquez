@@ -30,5 +30,5 @@ Feature: Login
   Scenario: Successful logout
     When the user is logged in to Clockify
     And the user deploys the user dropdown
-    And the user clicks on the link with text " Log out "
+    And the user clicks on Log out link
     Then the user returns to the login screen

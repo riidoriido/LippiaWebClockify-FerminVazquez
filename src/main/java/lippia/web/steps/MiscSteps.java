@@ -28,7 +28,7 @@ public class MiscSteps extends PageSteps {
     }
 
     @Then("the app shows a Loading popup and the file is downloaded")
-    public void theAppShowsALoadingPopupAndTheFileIsDownloaded() {
+    public void theAppShowsALoadingPopupAndTheFileIsDownloaded() throws InterruptedException {
         MiscService.verifyLoaderPresence();
     }
 

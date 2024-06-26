@@ -136,13 +136,13 @@ public class CommonService {
         }
     }
 
-    public static void changeWorkspace() throws InterruptedException {
+    public static void changeWorkspace(){
+        WebActionManager.waitPresence(WorkspaceConstants.ACTIVE_WORKSPACE_TEXT);
         String activeWorkspace = WebActionManager.getText(WorkspaceConstants.ACTIVE_WORKSPACE_TEXT);
         if (!activeWorkspace.equals("tpFinal_AAT")) {
             WorkspaceService.deployWorkspaceDropdown();
             WorkspaceService.manageWorkspaces();
             WebActionManager.waitClickable(WorkspaceConstants.PRIORITY_WORKSPACE_IN_LIST).click();
-            Thread.sleep(1500);
             DriverManager.getDriverInstance().navigate().back();
         }
     }

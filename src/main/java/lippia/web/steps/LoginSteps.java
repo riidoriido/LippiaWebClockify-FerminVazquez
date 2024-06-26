@@ -20,8 +20,15 @@ public class LoginSteps extends PageSteps {
         LoginService.deployUserDropDown();
     }
 
+    @And("the user clicks on Log out link")
+    public void theUserClicksOnLogOutLink() {
+        LoginService.clickOnLogout();
+    }
+
     @Then("the user returns to the login screen$")
     public void theUserReturnsToTheLoginScreen() {
         LoginService.isOnLoginScreen();
     }
+
+
 }

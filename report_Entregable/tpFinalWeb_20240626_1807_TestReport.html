@@ -1,0 +1,3487 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Clockify App</title>
+        <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+        <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+	    <link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@6fbbd1c32fbc2463d026da5c6ce2e9eef0d29512/spark/css/spark-style.css" rel="stylesheet" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style type="text/css">
+
+            
+
+            
+        
+</style></head>    <script src="https://cdn.rawgit.com/extent-framework/extent-github-cdn/7cc78ce/spark/js/jsontree.js"></script>
+<body class="spa bdd-report dark">
+    <div class="app header-dark side-nav-folded">
+        <div class="layout">
+<div class="header navbar">
+    <div class="vheader">
+        <div class="nav-logo">
+          <a href="#">
+            <div class="logo logo-dark" style="background-image: url('https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png')"></div>
+            <div class="logo logo-white" style="background-image: url('https://cdn.rawgit.com/extent-framework/extent-github-cdn/d74480e/commons/img/logo.png')"></div>
+          </a>
+        </div>
+        <ul class="nav-left">
+          <li class="search-box">
+            <a class="search-toggle" href="javascript:void(0);">
+              <i class="search-icon fa fa-search"></i>
+              <i class="search-icon-close fa fa-close"></i>
+            </a>
+          </li>
+          <li class="search-input">
+            <input id="search-tests" class="form-control" type="text" placeholder="Type to search...">
+          </li>
+        </ul>
+        <ul class="nav-right">
+          <li class="m-r-10">
+            <a href="#">
+              <span class="badge badge-primary">Automation Report - TP3AAT</span>
+            </a>
+          </li>
+            <li class="m-r-10">
+                <a href="#">
+                    <span class="badge badge-primary">Jun 26, 2024 03:07:16 PM</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div><div class="side-nav">
+  <div class="side-nav-inner">
+    <ul class="side-nav-menu scrollable">
+      <li class="nav-item dropdown" onclick="toggleView('test-view')">
+        <a id="nav-test" class="dropdown-toggle" href="index.html">
+          <span class="icon-holder">
+            <i class="fa fa-align-left"></i>
+          </span>
+          <span class="title">Tests</span>
+        </a>
+      </li>
+            <li class="nav-item dropdown" onclick="toggleView('tag-view')">
+        <a id="nav-tag" class="dropdown-toggle" href="tag.html">
+          <span class="icon-holder">
+            <i class="fa fa-tag"></i>
+          </span>
+          <span class="title">Tags</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+        <a id="nav-dashboard" class="dropdown-toggle" href="dashboard.html">
+          <span class="icon-holder">
+            <i class="fa fa-bar-chart"></i>
+          </span>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>            <div class="vcontainer">
+                <div class="main-content">
+<div class="test-wrapper row test-view">
+	<div class="test-list">
+		<div class="test-list-tools">
+			<ul class="tools pull-left">
+				<li>
+					<a href="">
+					<span class="font-size-14">Tests</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="tools text-right">
+				<li class="user-profile dropdown dropdown-animated scale-left">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-exclamation-circle"></i>
+					</a>
+					<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+						<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success pull-right"></span></a>
+						
+						
+						
+						
+						
+						<div class="dropdown-divider"></div>
+						<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+					</ul>
+				</li>
+				<li class="user-profile dropdown dropdown-animated scale-left">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-tag"></i>
+					</a>
+					<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+						<a class="dropdown-item" href="#">@Regression</a>
+						<a class="dropdown-item" href="#">@Login</a>
+						<a class="dropdown-item" href="#">@SuccessManualLogin</a>
+						<a class="dropdown-item" href="#">@Smoke</a>
+						<a class="dropdown-item" href="#">@FailedLogin</a>
+						<a class="dropdown-item" href="#">@Logout</a>
+						<a class="dropdown-item" href="#">@Misc</a>
+						<a class="dropdown-item" href="#">@SetupEntriesForPDF</a>
+						<a class="dropdown-item" href="#">@EditExistingTask</a>
+						<a class="dropdown-item" href="#">@revertChangesTimeEntry</a>
+						<a class="dropdown-item" href="#">@Projects</a>
+						<a class="dropdown-item" href="#">@SuccessfulProjects</a>
+						<a class="dropdown-item" href="#">@setupProjectCreation</a>
+						<a class="dropdown-item" href="#">@FailureProjects</a>
+						<a class="dropdown-item" href="#">@Timetracker</a>
+						<a class="dropdown-item" href="#">@Workspace</a>
+						<a class="dropdown-item" href="#">@WorkspaceSuccessfulCreation</a>
+						<a class="dropdown-item" href="#">@WorkspaceFailureCreation</a>
+						<a class="dropdown-item" href="#">@WorkspaceSuccessfulEdit</a>
+						<a class="dropdown-item" href="#">@WorkspaceSuccessfulDelete</a>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="test-list-wrapper scrollable">
+			<ul class="test-list-item">
+				<li class="test-item"  status="pass" test-id="1"
+					author=""
+					tag="@Regression @Login"
+					device="">
+					<div class="status-avatar pass-bg">
+						<i class="fa fa-check text-white"></i>
+					</div>
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">Login</p>
+							<p class="duration text-sm">0h 0m 33s+690ms</p>
+							<span class="datetime">15:07:20 PM</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="detail-head">
+							<div class="p-v-10 d-inline-block">
+								<div class="info">
+									<h5 class="test-status text-pass">Login</h5>
+									<span class='badge badge-success'>06.26.2024 15:07:20</span>
+									<span class='badge badge-danger'>06.26.2024 15:07:53</span>
+									<span class='badge badge-default'>0h 0m 33s+690ms</span>
+								</div>
+								<div class="m-t-15">
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Regression</span>
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Login</span>
+								</div>
+								<div class="m-t-10 m-l-5">
+									
+								</div>
+							</div>
+						</div>
+
+<div class="accordion mt-4">
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Successful manual Log in</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserOpensTheBrowserAndNavigatesTo()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user opens the browser and navigates to Clockify homepage</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the link with text "Log in"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks on the link with text " Log in manually "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.typeForLogin(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types on field email</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.typeForLogin(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types on field password</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Log In "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserIsLoggedInToClockifyAndCanSeeTheTimetracker()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user is logged in to Clockify and can see the Timetracker</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Failed log in cause: <error></div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse scenario_outline">
+						<div class="card-body l1">
+							<div class="card-header" role="tab">
+								<div class="card-title outline-child">
+									<div class="node">Failed log in cause: "Invalid email or password"</div>
+									<div class="status-avatar float-left pass-bg">
+										<i class="fa fa-check text-white"></i>
+									</div>
+								</div>
+							</div>
+							<div class="card-body collapse mt-3">
+									<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserOpensTheBrowserAndNavigatesTo()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Given the user opens the browser and navigates to Clockify homepage</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksLink(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks on the link with text "Log in"</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksLink(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>When the user clicks on the link with text " Log in manually "</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theUserTypesValueOnField(String,String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user types user@ejemplo.com on field "email"</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theUserTypesValueOnField(String,String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user types 123456 on field "password"</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="LoginSteps.theUserClicksTheLogInButton()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks the Log In button</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start then" title="LoginSteps.theAppShowsTheMessage(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Then the app shows the message "Invalid email or password"</span>
+									</div>
+				<div class="details"></div>
+							</div>
+						</div>
+						<div class="card-body l1">
+							<div class="card-header" role="tab">
+								<div class="card-title outline-child">
+									<div class="node">Failed log in cause: "Email format is not valid "</div>
+									<div class="status-avatar float-left pass-bg">
+										<i class="fa fa-check text-white"></i>
+									</div>
+								</div>
+							</div>
+							<div class="card-body collapse mt-3">
+									<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserOpensTheBrowserAndNavigatesTo()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Given the user opens the browser and navigates to Clockify homepage</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksLink(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks on the link with text "Log in"</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksLink(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>When the user clicks on the link with text " Log in manually "</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theUserTypesValueOnField(String,String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user types alguienejemplocom on field "email"</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theUserTypesValueOnField(String,String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user types 123456 on field "password"</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="LoginSteps.theUserClicksTheLogInButton()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks the Log In button</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start then" title="LoginSteps.theAppShowsTheMessage(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Then the app shows the message "Email format is not valid "</span>
+									</div>
+				<div class="details"></div>
+							</div>
+						</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Successful logout</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserOpensTheBrowserAndNavigatesTo()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user opens the browser and navigates to Clockify homepage</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the link with text "Log in"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.theUserIsLoggedInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user is logged in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="LoginSteps.theUserDeploysTheUserDropdown()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user deploys the user dropdown</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="LoginSteps.theUserClicksOnLogOutLink()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Log out link</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="LoginSteps.theUserReturnsToTheLoginScreen()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user returns to the login screen</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+</div>
+					</div>
+				</li>
+				<li class="test-item"  status="pass" test-id="42"
+					author=""
+					tag="@Regression @Misc"
+					device="">
+					<div class="status-avatar pass-bg">
+						<i class="fa fa-check text-white"></i>
+					</div>
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">Miscellaneous features</p>
+							<p class="duration text-sm">0h 0m 50s+419ms</p>
+							<span class="datetime">15:08:05 PM</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="detail-head">
+							<div class="p-v-10 d-inline-block">
+								<div class="info">
+									<h5 class="test-status text-pass">Miscellaneous features</h5>
+									<span class='badge badge-success'>06.26.2024 15:08:05</span>
+									<span class='badge badge-danger'>06.26.2024 15:08:55</span>
+									<span class='badge badge-default'>0h 0m 50s+419ms</span>
+								</div>
+								<div class="m-t-15">
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Regression</span>
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Misc</span>
+								</div>
+								<div class="m-t-10 m-l-5">
+									
+								</div>
+							</div>
+						</div>
+
+<div class="accordion mt-4">
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Export report to PDF</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets the desired Workspace as active</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.theUserClicksTheSidebarLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks the sidebar link "/reports/summary"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserClicksOnRangeToOpenTheCalendar()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Range to open the Calendar</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserSetsDateJune(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets date June "3"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserSetsDateJune(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets date June "9"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserClicksOnExport()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Export</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserClicksOnSaveAsPDF()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Save as PDF</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="MiscSteps.theAppShowsALoadingPopupAndTheFileIsDownloaded()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the app shows a Loading popup and the file is downloaded</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Input data to create project, then cancel creation</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets the desired Workspace as active</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.theUserClicksTheSidebarLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks the sidebar link "/projects"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Create new "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.userTypesProjectsName(String,String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types tpFinalProject_cancel on the project name input field</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the link with text "Cancel"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="ProjectsSteps.theUserGoesBackToProjectsListAndIsNotVisible(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user goes back to projects list and "tpFinalProject_cancel" is not visible</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Edit existing created entry</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse scenario_outline">
+						<div class="card-body l1">
+							<div class="card-header" role="tab">
+								<div class="card-title outline-child">
+									<div class="node">Edit existing created entry</div>
+									<div class="status-avatar float-left pass-bg">
+										<i class="fa fa-check text-white"></i>
+									</div>
+								</div>
+							</div>
+							<div class="card-body collapse mt-3">
+									<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Given the user logs in to Clockify</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user sets the desired Workspace as active</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start when" title="MiscSteps.theUserTypesTaskOverTaskDescription(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>When the user types editedTask_tpFinal over task description</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserClicksOnTheProjectPicker()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks on the project picker</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserClicksOn()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks on 'No project'</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserClicksOnThe$Icon()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks on the $ icon</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserEditsTheStartEndRange(String,String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user edits the 12 19 range</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="MiscSteps.theUserSelectsNewDate(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user selects new 6</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Then the user can see the message "Successfully updated description."</span>
+									</div>
+				<div class="details"></div>
+							</div>
+						</div>
+				</div>
+	</div>
+</div>
+					</div>
+				</li>
+				<li class="test-item"  status="pass" test-id="81"
+					author=""
+					tag="@Regression @Projects"
+					device="">
+					<div class="status-avatar pass-bg">
+						<i class="fa fa-check text-white"></i>
+					</div>
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">Projects</p>
+							<p class="duration text-sm">0h 0m 30s+652ms</p>
+							<span class="datetime">15:08:59 PM</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="detail-head">
+							<div class="p-v-10 d-inline-block">
+								<div class="info">
+									<h5 class="test-status text-pass">Projects</h5>
+									<span class='badge badge-success'>06.26.2024 15:08:59</span>
+									<span class='badge badge-danger'>06.26.2024 15:09:30</span>
+									<span class='badge badge-default'>0h 0m 30s+652ms</span>
+								</div>
+								<div class="m-t-15">
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Regression</span>
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Projects</span>
+								</div>
+								<div class="m-t-10 m-l-5">
+									
+								</div>
+							</div>
+						</div>
+
+<div class="accordion mt-4">
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Successful project creation</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets the desired Workspace as active</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theUserClicksTheSidebarLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks the sidebar link "/projects"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks on the button with text " Create new "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.userTypesProjectsName(String,String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types tpFinalProject on the project name input field</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Create "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user can see the message " Project has been created "</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Failed project creation (String does not meet requirements)</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets the desired Workspace as active</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theUserClicksTheSidebarLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks the sidebar link "/projects"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks on the button with text " Create new "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.userTypesIntCharString(String,int)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types specifically a project name with 255 characters</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Create "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user can see the message " Project name has to be between 2 and 250 characters long "</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+</div>
+					</div>
+				</li>
+				<li class="test-item"  status="pass" test-id="104"
+					author=""
+					tag="@Regression @Timetracker"
+					device="">
+					<div class="status-avatar pass-bg">
+						<i class="fa fa-check text-white"></i>
+					</div>
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">Timetracker</p>
+							<p class="duration text-sm">0h 0m 21s+207ms</p>
+							<span class="datetime">15:09:30 PM</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="detail-head">
+							<div class="p-v-10 d-inline-block">
+								<div class="info">
+									<h5 class="test-status text-pass">Timetracker</h5>
+									<span class='badge badge-success'>06.26.2024 15:09:30</span>
+									<span class='badge badge-danger'>06.26.2024 15:09:52</span>
+									<span class='badge badge-default'>0h 0m 21s+207ms</span>
+								</div>
+								<div class="m-t-15">
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Regression</span>
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Timetracker</span>
+								</div>
+								<div class="m-t-10 m-l-5">
+									
+								</div>
+							</div>
+						</div>
+
+<div class="accordion mt-4">
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Successful timetracker entry</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse scenario_outline">
+						<div class="card-body l1">
+							<div class="card-header" role="tab">
+								<div class="card-title outline-child">
+									<div class="node">Successful timetracker entry</div>
+									<div class="status-avatar float-left pass-bg">
+										<i class="fa fa-check text-white"></i>
+									</div>
+								</div>
+							</div>
+							<div class="card-body collapse mt-3">
+									<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Given the user logs in to Clockify</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user sets the desired Workspace as active</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start when" title="TimetrackerSteps.theUserTypesTask(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>When the user types a task_</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="TimetrackerSteps.theUserCompletesTheHourRange(String,String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user completes the 8 16 range</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="TimetrackerSteps.theUserSelectsDesiredDate(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user selects desired 9</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>And the user clicks on the button with text " Add "</span>
+									</div>
+				<div class="details"></div>
+									<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+										<span class="alert-icon pass-bg">
+											<i class="fa fa-check text-white"></i>
+										</span>
+										<span>Then the user can see the message "Time entry has been created"</span>
+									</div>
+				<div class="details"></div>
+							</div>
+						</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Successful time entry delete</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.theUserSetsTheDesiredWorkspaceAsActive()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user sets the desired Workspace as active</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="TimetrackerSteps.theUserDeploysTheDropdownOnTheSelectedEntry()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user deploys the dropdown on the selected entry</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksLink(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the link with text " Delete "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Delete "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user can see the message "Time entry has been deleted"</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+</div>
+					</div>
+				</li>
+				<li class="test-item"  status="pass" test-id="125"
+					author=""
+					tag="@Regression @Workspace"
+					device="">
+					<div class="status-avatar pass-bg">
+						<i class="fa fa-check text-white"></i>
+					</div>
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">Workspace</p>
+							<p class="duration text-sm">0h 0m 45s+43ms</p>
+							<span class="datetime">15:09:52 PM</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="detail-head">
+							<div class="p-v-10 d-inline-block">
+								<div class="info">
+									<h5 class="test-status text-pass">Workspace</h5>
+									<span class='badge badge-success'>06.26.2024 15:09:52</span>
+									<span class='badge badge-danger'>06.26.2024 15:10:37</span>
+									<span class='badge badge-default'>0h 0m 45s+43ms</span>
+								</div>
+								<div class="m-t-15">
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Regression</span>
+			<span class="badge badge-pill badge-default"><i class="fa fa-tag"></i> @Workspace</span>
+								</div>
+								<div class="m-t-10 m-l-5">
+									
+								</div>
+							</div>
+						</div>
+
+<div class="accordion mt-4">
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Successful workspace creation</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.userDeploysWorkspaceDropdown()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user deploys the workspaces dropdown</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.theUserClicksOnManageWorkspaces()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Manage Workspaces</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks on the button with text " Create new "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="ProjectsSteps.userTypesProjectsName(String,String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types tpFinal_AAT_2 on the workspace name input field</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Create "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user can see the message "Workspace has been created."</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Workspace creation failure cause : <error></div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.userDeploysWorkspaceDropdown()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user deploys the workspaces dropdown</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.theUserClicksOnManageWorkspaces()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Manage Workspaces</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks on the button with text " Create new "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.userTypesIntCharString(String,int)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types specifically a workspace name with 55 characters</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="LoginSteps.theAppShowsTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the app shows the message  " Workspace name has to be between 1 and 50 characters long "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.theButtonIsNotClickeable(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the button " Create " is not clickeable</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Edit workspace</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.userDeploysWorkspaceDropdown()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user deploys the workspaces dropdown</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.theUserClicksOnManageWorkspaces()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Manage Workspaces</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Settings "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="CommonSteps.theUserTypesValueOnField(String,String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user types _edited on field "workspaceName"</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.theUserReturnsReturnsToTheListing()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user returns to the listing</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user can see the message "Workspace settings have been updated."</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+	<div class="card">
+		<div class="card-header" role="tab">
+			<div class="card-title pl-3">
+				<div class="node">Delete workspace</div>
+				<div class="status-avatar float-left pass-bg">
+					<i class="fa fa-check text-white"></i>
+				</div>
+			</div>
+		</div>
+				<div class="collapse">
+					<div class="card-body">
+							<div class="d-flex align-items-center justify-content-start given" title="CommonSteps.theUserLogsInToClockify()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Given the user logs in to Clockify</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.userDeploysWorkspaceDropdown()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user deploys the workspaces dropdown</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.theUserClicksOnManageWorkspaces()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on Manage Workspaces</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start when" title="WorkspaceSteps.theUserClicksXButtonOnWorkspace()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>When the user clicks X button on Workspace</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="WorkspaceSteps.theUserTypesTheRequiredDELETEKeyword()">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user types the required DELETE keyword</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start and" title="CommonSteps.userClicksButton(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>And the user clicks on the button with text " Delete Workspace "</span>
+							</div>
+				<div class="details"></div>
+							<div class="d-flex align-items-center justify-content-start then" title="CommonSteps.theUserCanSeeTheMessage(String)">
+								<span class="alert-icon pass-bg">
+									<i class="fa fa-check text-white"></i>
+								</span>
+								<span>Then the user can see the message "You have left this workspace."</span>
+							</div>
+				<div class="details"></div>
+					</div>
+				</div>
+	</div>
+</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="test-content scrollable">
+		<div class="test-content-tools">
+			<ul>
+				<li>
+					<a class="back-to-test" href="javascript:void(0)">
+					<i class="fa fa-arrow-left"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="test-content-detail">
+			<div class="detail-body"></div>
+		</div>
+	</div>
+</div><div class="test-wrapper row tag-view attributes-view">
+	<div class="test-list">
+		<div class="test-list-tools">
+			<ul class="tools pull-left">
+				<li>
+					<a href="">
+					<span class="font-size-14">Tags</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="tools text-right">
+				<li>
+					<a href="#">
+					<span class="badge badge-primary">20</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="test-list-wrapper scrollable">
+			<ul class="test-list-item">
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Regression</p>
+							<p class="duration text-sm">20 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>15</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Regression</h4>
+							<span status="pass" class='badge badge-success'>15 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:20 PM</td>
+									<td class='linked' test-id='1'>
+										Login
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:20 PM</td>
+									<td class='linked' test-id='2'>
+										Successful manual Log in
+										<div class="">
+											<span class="badge badge-default">Login.Successful manual Log in</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:33 PM</td>
+									<td class='linked' test-id='13'>
+										Failed log in cause: "Invalid email or password"
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Invalid email or password"</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:39 PM</td>
+									<td class='linked' test-id='23'>
+										Failed log in cause: "Email format is not valid "
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Email format is not valid "</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:43 PM</td>
+									<td class='linked' test-id='33'>
+										Successful logout
+										<div class="">
+											<span class="badge badge-default">Login.Successful logout</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:05 PM</td>
+									<td class='linked' test-id='42'>
+										Miscellaneous features
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:05 PM</td>
+									<td class='linked' test-id='43'>
+										Export report to PDF
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Export report to PDF</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:27 PM</td>
+									<td class='linked' test-id='57'>
+										Input data to create project, then cancel creation
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Input data to create project, then cancel creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='68'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='81'>
+										Projects
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='82'>
+										Successful project creation
+										<div class="">
+											<span class="badge badge-default">Projects.Successful project creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:19 PM</td>
+									<td class='linked' test-id='94'>
+										Failed project creation (String does not meet requirements)
+										<div class="">
+											<span class="badge badge-default">Projects.Failed project creation (String does not meet requirements)</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:30 PM</td>
+									<td class='linked' test-id='104'>
+										Timetracker
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:30 PM</td>
+									<td class='linked' test-id='106'>
+										Successful timetracker entry
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful timetracker entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:41 PM</td>
+									<td class='linked' test-id='116'>
+										Successful time entry delete
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful time entry delete</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:52 PM</td>
+									<td class='linked' test-id='125'>
+										Workspace
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:52 PM</td>
+									<td class='linked' test-id='126'>
+										Successful workspace creation
+										<div class="">
+											<span class="badge badge-default">Workspace.Successful workspace creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:03 PM</td>
+									<td class='linked' test-id='136'>
+										Workspace creation failure cause : <error>
+										<div class="">
+											<span class="badge badge-default">Workspace.Workspace creation failure cause : <error></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:13 PM</td>
+									<td class='linked' test-id='146'>
+										Edit workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Edit workspace</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:25 PM</td>
+									<td class='linked' test-id='156'>
+										Delete workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Delete workspace</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Login</p>
+							<p class="duration text-sm">5 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>4</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Login</h4>
+							<span status="pass" class='badge badge-success'>4 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:20 PM</td>
+									<td class='linked' test-id='1'>
+										Login
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:20 PM</td>
+									<td class='linked' test-id='2'>
+										Successful manual Log in
+										<div class="">
+											<span class="badge badge-default">Login.Successful manual Log in</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:33 PM</td>
+									<td class='linked' test-id='13'>
+										Failed log in cause: "Invalid email or password"
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Invalid email or password"</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:39 PM</td>
+									<td class='linked' test-id='23'>
+										Failed log in cause: "Email format is not valid "
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Email format is not valid "</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:43 PM</td>
+									<td class='linked' test-id='33'>
+										Successful logout
+										<div class="">
+											<span class="badge badge-default">Login.Successful logout</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@SuccessManualLogin</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@SuccessManualLogin</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:20 PM</td>
+									<td class='linked' test-id='2'>
+										Successful manual Log in
+										<div class="">
+											<span class="badge badge-default">Login.Successful manual Log in</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Smoke</p>
+							<p class="duration text-sm">16 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>16</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Smoke</h4>
+							<span status="pass" class='badge badge-success'>16 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:20 PM</td>
+									<td class='linked' test-id='2'>
+										Successful manual Log in
+										<div class="">
+											<span class="badge badge-default">Login.Successful manual Log in</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:33 PM</td>
+									<td class='linked' test-id='12'>
+										Failed log in cause: <error>
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: <error></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:33 PM</td>
+									<td class='linked' test-id='13'>
+										Failed log in cause: "Invalid email or password"
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Invalid email or password"</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:39 PM</td>
+									<td class='linked' test-id='23'>
+										Failed log in cause: "Email format is not valid "
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Email format is not valid "</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:43 PM</td>
+									<td class='linked' test-id='33'>
+										Successful logout
+										<div class="">
+											<span class="badge badge-default">Login.Successful logout</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:05 PM</td>
+									<td class='linked' test-id='43'>
+										Export report to PDF
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Export report to PDF</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:27 PM</td>
+									<td class='linked' test-id='57'>
+										Input data to create project, then cancel creation
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Input data to create project, then cancel creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='67'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='68'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='82'>
+										Successful project creation
+										<div class="">
+											<span class="badge badge-default">Projects.Successful project creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:30 PM</td>
+									<td class='linked' test-id='105'>
+										Successful timetracker entry
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful timetracker entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:30 PM</td>
+									<td class='linked' test-id='106'>
+										Successful timetracker entry
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful timetracker entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:41 PM</td>
+									<td class='linked' test-id='116'>
+										Successful time entry delete
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful time entry delete</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:52 PM</td>
+									<td class='linked' test-id='126'>
+										Successful workspace creation
+										<div class="">
+											<span class="badge badge-default">Workspace.Successful workspace creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:13 PM</td>
+									<td class='linked' test-id='146'>
+										Edit workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Edit workspace</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:25 PM</td>
+									<td class='linked' test-id='156'>
+										Delete workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Delete workspace</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@FailedLogin</p>
+							<p class="duration text-sm">3 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>3</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@FailedLogin</h4>
+							<span status="pass" class='badge badge-success'>3 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:33 PM</td>
+									<td class='linked' test-id='12'>
+										Failed log in cause: <error>
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: <error></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:33 PM</td>
+									<td class='linked' test-id='13'>
+										Failed log in cause: "Invalid email or password"
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Invalid email or password"</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:39 PM</td>
+									<td class='linked' test-id='23'>
+										Failed log in cause: "Email format is not valid "
+										<div class="">
+											<span class="badge badge-default">Login.Failed log in cause: "Email format is not valid "</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Logout</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Logout</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:07:43 PM</td>
+									<td class='linked' test-id='33'>
+										Successful logout
+										<div class="">
+											<span class="badge badge-default">Login.Successful logout</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Misc</p>
+							<p class="duration text-sm">4 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>3</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Misc</h4>
+							<span status="pass" class='badge badge-success'>3 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:05 PM</td>
+									<td class='linked' test-id='42'>
+										Miscellaneous features
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:05 PM</td>
+									<td class='linked' test-id='43'>
+										Export report to PDF
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Export report to PDF</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:27 PM</td>
+									<td class='linked' test-id='57'>
+										Input data to create project, then cancel creation
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Input data to create project, then cancel creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='68'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@SetupEntriesForPDF</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@SetupEntriesForPDF</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:05 PM</td>
+									<td class='linked' test-id='43'>
+										Export report to PDF
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Export report to PDF</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@EditExistingTask</p>
+							<p class="duration text-sm">2 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>2</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@EditExistingTask</h4>
+							<span status="pass" class='badge badge-success'>2 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='67'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='68'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@revertChangesTimeEntry</p>
+							<p class="duration text-sm">2 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>2</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@revertChangesTimeEntry</h4>
+							<span status="pass" class='badge badge-success'>2 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='67'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:37 PM</td>
+									<td class='linked' test-id='68'>
+										Edit existing created entry
+										<div class="">
+											<span class="badge badge-default">Miscellaneous features.Edit existing created entry</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Projects</p>
+							<p class="duration text-sm">3 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>2</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Projects</h4>
+							<span status="pass" class='badge badge-success'>2 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='81'>
+										Projects
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='82'>
+										Successful project creation
+										<div class="">
+											<span class="badge badge-default">Projects.Successful project creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:19 PM</td>
+									<td class='linked' test-id='94'>
+										Failed project creation (String does not meet requirements)
+										<div class="">
+											<span class="badge badge-default">Projects.Failed project creation (String does not meet requirements)</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@SuccessfulProjects</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@SuccessfulProjects</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='82'>
+										Successful project creation
+										<div class="">
+											<span class="badge badge-default">Projects.Successful project creation</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@setupProjectCreation</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@setupProjectCreation</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:08:59 PM</td>
+									<td class='linked' test-id='82'>
+										Successful project creation
+										<div class="">
+											<span class="badge badge-default">Projects.Successful project creation</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@FailureProjects</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@FailureProjects</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:19 PM</td>
+									<td class='linked' test-id='94'>
+										Failed project creation (String does not meet requirements)
+										<div class="">
+											<span class="badge badge-default">Projects.Failed project creation (String does not meet requirements)</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Timetracker</p>
+							<p class="duration text-sm">3 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>2</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Timetracker</h4>
+							<span status="pass" class='badge badge-success'>2 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:30 PM</td>
+									<td class='linked' test-id='104'>
+										Timetracker
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:30 PM</td>
+									<td class='linked' test-id='106'>
+										Successful timetracker entry
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful timetracker entry</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:41 PM</td>
+									<td class='linked' test-id='116'>
+										Successful time entry delete
+										<div class="">
+											<span class="badge badge-default">Timetracker.Successful time entry delete</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@Workspace</p>
+							<p class="duration text-sm">5 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>4</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@Workspace</h4>
+							<span status="pass" class='badge badge-success'>4 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:52 PM</td>
+									<td class='linked' test-id='125'>
+										Workspace
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:52 PM</td>
+									<td class='linked' test-id='126'>
+										Successful workspace creation
+										<div class="">
+											<span class="badge badge-default">Workspace.Successful workspace creation</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:03 PM</td>
+									<td class='linked' test-id='136'>
+										Workspace creation failure cause : <error>
+										<div class="">
+											<span class="badge badge-default">Workspace.Workspace creation failure cause : <error></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:13 PM</td>
+									<td class='linked' test-id='146'>
+										Edit workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Edit workspace</span>
+										</div>
+									</td>
+								</tr>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:25 PM</td>
+									<td class='linked' test-id='156'>
+										Delete workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Delete workspace</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@WorkspaceSuccessfulCreation</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@WorkspaceSuccessfulCreation</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:09:52 PM</td>
+									<td class='linked' test-id='126'>
+										Successful workspace creation
+										<div class="">
+											<span class="badge badge-default">Workspace.Successful workspace creation</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@WorkspaceFailureCreation</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@WorkspaceFailureCreation</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:03 PM</td>
+									<td class='linked' test-id='136'>
+										Workspace creation failure cause : <error>
+										<div class="">
+											<span class="badge badge-default">Workspace.Workspace creation failure cause : <error></span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@WorkspaceSuccessfulEdit</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@WorkspaceSuccessfulEdit</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:13 PM</td>
+									<td class='linked' test-id='146'>
+										Edit workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Edit workspace</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+				<li class="test-item">
+					<div class="open-test">
+						<div class="test-detail">
+							<p class="name">@WorkspaceSuccessfulDelete</p>
+							<p class="duration text-sm">1 tests</p>
+							<span class="datetime">
+							<span class='badge badge-success'>1</span>
+							
+							
+							
+							</span>
+						</div>
+					</div>
+					<div class="test-contents d-none">
+						<div class="info">
+							<h4>@WorkspaceSuccessfulDelete</h4>
+							<span status="pass" class='badge badge-success'>1 passed</span>
+							
+							
+							
+						</div>
+						<table class='table table-sm mt-4'>
+							<thead>
+								<tr>
+									<th class="status-col">Status</th>
+									<th class="timestamp-col">Timestamp</th>
+									<th>TestName</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="tag-test-status" status="pass">
+									<td>
+										<div class='status-avatar pass-bg'>
+											<i class="fa fa-check text-white"></i>
+										</div>
+									</td>
+									<td>15:10:25 PM</td>
+									<td class='linked' test-id='156'>
+										Delete workspace
+										<div class="">
+											<span class="badge badge-default">Workspace.Delete workspace</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="test-content scrollable">
+		<div class="test-content-tools">
+			<ul>
+				<li>
+					<a class="back-to-test" href="javascript:void(0)">
+					<i class="fa fa-arrow-left"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="test-content-detail">
+			<div class="detail-body"></div>
+		</div>
+	</div>
+</div>                    <!-- dashboard -->
+<div class="container-fluid p-4 dashboard-view">
+	<div class="row">
+		<div class="col-sm-12 col-md-4">
+			<div class="card">
+				<div class="card-header">
+					<h6 class="card-title">Features</h6>
+				</div>
+				<div class="card-body">
+					<div class="">
+						<canvas id='parent-analysis' width='115' height='90'></canvas>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div><small data-tooltip='100%'>
+						<b>5</b> features passed
+						</small>
+					</div>
+					<div>
+						<small data-tooltip='0%'><b>0</b> features failed, 
+						<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-4">
+			<div class="card">
+				<div class="card-header">
+					<h6 class="card-title">Scenarios</h6>
+				</div>
+				<div class="card-body">
+					<div class="">
+						<canvas id='child-analysis' width='115' height='90'></canvas>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div><small data-tooltip='100%'><b>15</b> scenarios passed</small></div>
+					<div>
+						<small data-tooltip='0%'><b>0</b> scenarios failed, 
+						<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-4">
+			<div class="card">
+				<div class="card-header">
+					<h6 class="card-title">Steps</h6>
+				</div>
+				<div class="card-body">
+					<div class="">
+						<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div><small data-tooltip='100%'><b>107</b> steps passed</small></div>
+					<div>
+						<small data-tooltip='0%'><b>0</b> steps failed, 
+						<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<div class="card">
+				<div class="card-body box-height-150">
+					<div class="media justify-content-between">
+						<div class="card-header">
+							<h6 class="card-title">Features</h6>
+							<h2 class="font-size-28 font-weight-light mt-3">5</h2>
+							<span class="text-semibold text-success font-size-15">
+							<i class="ti-arrow-up font-size-11"></i> 
+							<span>100.00%</span>
+							</span>
+						</div>
+						<div class="align-self-end">
+							<i class="fa fa-align-left font-size-70 opacity-01"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card">
+				<div class="card-body box-height-150">
+					<div class="media justify-content-between">
+						<div class="card-header">
+							<h6 class="card-title">Scenarios</h6>
+							<h2 class="font-size-28 font-weight-light mt-3">15</h2>
+							<span class="text-semibold text-success font-size-15">
+							<i class="ti-arrow-up font-size-11"></i> 
+							<span>100.00%</span>
+							</span>
+						</div>
+						<div class="align-self-end">
+							<i class="fa fa-align-left font-size-70 opacity-01"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card">
+				<div class="card-body box-height-150">
+					<div class="media justify-content-between">
+						<div class="card-header">
+							<h6 class="card-title">Start</h6>
+							<h4 class="font-weight-light mt-4">Jun 26, 2024 03:07:16 PM</h4>
+							<span class="text-semibold text-success font-size-15">
+						</div>
+						<div class="align-self-end">
+							<i class="fa fa-clock-o font-size-70 text-success opacity-01"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card">
+				<div class="card-body box-height-150">
+					<div class="media justify-content-between">
+						<div class="card-header">
+							<h6 class="card-title">Duration</h6>
+							<h4 class="font-weight-light mt-4">0h 3m 21s+538ms</h4>
+							<span class="text-semibold font-size-15">
+						</div>
+						<div class="align-self-end">
+							<i class="fa fa-clock-o font-size-70 opacity-01"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h6 class="card-title">Timeline</h6>
+				</div>
+				<div class="card-body">
+					<div class="">
+						<canvas id="timeline" height="120"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					<h6 class="card-title">Tags</h6>
+				</div>
+				<div class="table-overflow">
+					<table class="table table-sm">
+						<thead>
+							<tr class="bg-gray">
+								<th>Name</th>
+								<th>Passed</th>
+								<th>Failed</th>
+								<th>Skipped</th>
+								<th>Others</th>
+								<th>Passed %</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>@Regression</td>
+								<td>15</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									75%
+								</td>
+							</tr>
+							<tr>
+								<td>@Login</td>
+								<td>4</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									80%
+								</td>
+							</tr>
+							<tr>
+								<td>@SuccessManualLogin</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@Smoke</td>
+								<td>16</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@FailedLogin</td>
+								<td>3</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@Logout</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@Misc</td>
+								<td>3</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									75%
+								</td>
+							</tr>
+							<tr>
+								<td>@SetupEntriesForPDF</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@EditExistingTask</td>
+								<td>2</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@revertChangesTimeEntry</td>
+								<td>2</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@Projects</td>
+								<td>2</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									66.667%
+								</td>
+							</tr>
+							<tr>
+								<td>@SuccessfulProjects</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@setupProjectCreation</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@FailureProjects</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@Timetracker</td>
+								<td>2</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									66.667%
+								</td>
+							</tr>
+							<tr>
+								<td>@Workspace</td>
+								<td>4</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									80%
+								</td>
+							</tr>
+							<tr>
+								<td>@WorkspaceSuccessfulCreation</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@WorkspaceFailureCreation</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@WorkspaceSuccessfulEdit</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+							<tr>
+								<td>@WorkspaceSuccessfulDelete</td>
+								<td>1</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>
+									100%
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var statusGroup = {
+	    parentCount: 5,
+		passParent: 5,
+		failParent: 0,
+		fatalParent: 0,
+		errorParent: 0,
+		warningParent: 0,
+		skipParent: 0,
+		exceptionsParent: 0,
+		childCount: 15,
+		passChild: 15,
+		failChild: 0,
+		fatalChild: 0,
+		errorChild: 0,
+		warningChild: 0,
+		skipChild: 0,
+		infoChild: 0,
+		debugChild: 0,
+		exceptionsChild: 0,
+		grandChildCount: 107,
+		passGrandChild: 107,
+		failGrandChild: 0,
+		fatalGrandChild: 0,
+		errorGrandChild: 0,
+		warningGrandChild: 0,
+		skipGrandChild: 0,
+		infoGrandChild: 0,
+		debugGrandChild: 0,
+		exceptionsGrandChild: 0,
+		eventsCount: 107,
+		passEvents: 107,
+		failEvents: 0,
+		fatalEvents: 0,
+		errorEvents: 0,
+		warningEvents: 0,
+		skipEvents: 0,
+		infoEvents: 0,
+		debugEvents: 0,
+		exceptionsEvents: 0
+	};
+</script>
+<script>
+	var timeline = {
+	        "Login":33.69,"Miscellaneous features":50.419,"Projects":30.652,"Timetracker":21.207,"Workspace":45.043
+	};
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ac7abbc71b4bb073da00153a5a3fdbcfe0c95e2a/spark/js/spark-script.js"></script>
+<script type="text/javascript">
+
+
+            
+                $(document).ready(function() {
+
+                });
+            
+        
+</script></body>
+</html>

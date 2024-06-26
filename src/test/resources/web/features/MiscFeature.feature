@@ -17,7 +17,8 @@ Feature: Miscellaneous features
 
   @Smoke
   Scenario: Input data to create project, then cancel creation
-    When the user clicks on the button with text " Create new "
+    When the user clicks the sidebar link "/projects"
+    And the user clicks on the button with text " Create new "
     And the user types tpFinalProject_cancel on the project name input field
     And the user clicks on the link with text "Cancel"
     Then the user goes back to projects list and "tpFinalProject_cancel" is not visible

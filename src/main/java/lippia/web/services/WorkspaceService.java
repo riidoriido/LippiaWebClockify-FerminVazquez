@@ -2,7 +2,6 @@ package lippia.web.services;
 
 import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.driver.DriverManager;
-import lippia.web.constants.CommonConstants;
 import lippia.web.constants.WorkspaceConstants;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -17,8 +16,8 @@ public class WorkspaceService {
     }
 
     public static void deleteWorkspace() {
-        if (WebActionManager.waitVisibility(WorkspaceConstants.DELETE_WORKSPACE_BUTTON,"3").isDisplayed()){
-        WebActionManager.click(WorkspaceConstants.DELETE_WORKSPACE_BUTTON,false,"3");}
+        if (WebActionManager.waitVisibility(WorkspaceConstants.DELETE_WORKSPACE_BUTTON,"10").isDisplayed()){
+        WebActionManager.click(WorkspaceConstants.DELETE_WORKSPACE_BUTTON,true,"10");}
         else {
             Reporter.log("Workspace is either active or non-existent.");
         }
@@ -33,13 +32,4 @@ public class WorkspaceService {
         Assert.assertTrue(WebActionManager.isVisible(WorkspaceConstants.WORKSPACE_LISTING), "Element is not found in current view.");
     }
 
-    public static void resetWorkspaceCreated() throws InterruptedException {
-        CommonService.changeWorkspace();
-        WebActionManager.waitInvisibility(CommonConstants.TOAST_EL);
-        WebActionManager.click(WorkspaceConstants.DELETE_WORKSPACE_BUTTON,true,"10");
-        typeDeleteOnInput();
-        CommonService.clickButton("' Delete Workspace '");
-
-
-    }
 }
