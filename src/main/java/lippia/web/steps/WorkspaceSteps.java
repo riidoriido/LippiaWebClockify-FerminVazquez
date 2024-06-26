@@ -36,8 +36,4 @@ public class WorkspaceSteps extends PageSteps {
         WorkspaceService.deleteWorkspace();
     }
 
-    @And("rollback workspace creation")
-    public void rollbackWorkspaceCreation() throws InterruptedException {
-        WorkspaceService.resetWorkspaceCreated();
-    }
 }

@@ -17,7 +17,7 @@ public class TimetrackerService {
     }
     public static void userPicksProjectDate(String date) {
         WebActionManager.waitClickable(TimetrackerConstants.DATE_SELECT_DROPDOWN).click();
-        WebActionManager.click(TimetrackerConstants.DATE_SELECT,date);
+        WebActionManager.click(TimetrackerConstants.DATE_SELECT_CALENDAR,date);
     }
 
     public static void userClickDropdownProject() {
@@ -26,5 +26,33 @@ public class TimetrackerService {
             WebActionManager.waitClickable(TimetrackerConstants.DROPDOWN_TARGET);
             WebActionManager.click(TimetrackerConstants.DROPDOWN_TARGET,false);
         }
+    }
+
+    public static void editProjectDescription(String description) {
+        WebActionManager.waitClickable(TimetrackerConstants.ENTRY_LIST_INPUT_EDIT).clear();
+        WebActionManager.setInput(TimetrackerConstants.ENTRY_LIST_INPUT_EDIT,description);
+    }
+
+    public static void editProjectPicker() {
+        WebActionManager.waitClickable(TimetrackerConstants.ENTRY_LIST_PROJECT_PICKER_LABEL_EDIT).click();
+    }
+
+    public static void pickNullProject() {
+        WebActionManager.waitVisibility(TimetrackerConstants.ENTRY_LIST_PROJECT_PICKER_NONE).click();
+    }
+
+
+    public static void toggleBillableEdit(){
+        WebActionManager.waitClickable(TimetrackerConstants.ENTRY_LIST_BILLABLE_SWITCH).click();
+    }
+
+    public static void editHourRange(String start, String end) {
+        WebActionManager.setInput(TimetrackerConstants.ENTRY_LIST_START_EDIT,start);
+        WebActionManager.setInput(TimetrackerConstants.ENTRY_LIST_END_EDIT,end,true,false);
+    }
+
+    public static void editTaskDate(String date) {
+        WebActionManager.click(TimetrackerConstants.ENTRY_LIST_DATE_EDIT);
+        WebActionManager.waitVisibility(TimetrackerConstants.DATE_SELECT_CALENDAR,date).click();
     }
 }

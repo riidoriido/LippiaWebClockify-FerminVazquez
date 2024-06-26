@@ -3,17 +3,10 @@ package lippia.web.steps;
 import com.crowdar.core.PageSteps;
 
 import io.cucumber.java.en.*;
-import lippia.web.services.ApiHelperService;
 import lippia.web.services.CommonService;
 import lippia.web.services.MiscService;
 
 public class ProjectsSteps extends PageSteps {
-
-    @And("check for required preconditions")
-    public void checkForRequiredPreconditions() {
-        ApiHelperService.checkForWorkspace();
-        ApiHelperService.checkForProjectAndDelete();
-    }
 
     @And("the user sets the desired Workspace as active")
     public void theUserSetsTheDesiredWorkspaceAsActive() throws InterruptedException {
@@ -29,11 +22,5 @@ public class ProjectsSteps extends PageSteps {
     public void theUserGoesBackToProjectsListAndIsNotVisible(String projectName) {
         MiscService.verifyProjectNotCreated(projectName);
     }
-
-    @And("cleanup service is executed")
-    public void cleanupServiceIsExecuted() {
-        ApiHelperService.checkForProjectAndDelete();
-    }
-
 
 }

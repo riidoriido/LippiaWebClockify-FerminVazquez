@@ -3,6 +3,7 @@ Feature: Timetracker
 
   Background:
     Given the user logs in to Clockify
+    And the user sets the desired Workspace as active
 
   @Smoke
   Scenario Outline: Successful timetracker entry
@@ -12,8 +13,8 @@ Feature: Timetracker
     And the user clicks on the button with text " Add "
     Then the user can see the message "Time entry has been created"
     Examples:
-      | task  | date | start | end  |
-      | task_ | 9    | 8  | 16 |
+      | task  | date | start | end |
+      | task_ | 9    | 8     | 16  |
 
 
   @Smoke

@@ -9,7 +9,7 @@ import io.restassured.response.Response;
 import java.util.List;
 
 
-public class ApiHelperService {
+public class APIManagementService {
     public static final String baseUrl = "https://api.clockify.me/api/v1";
     public static final String apiKey = PropertyManager.getProperty("clockify.token");
 
@@ -131,5 +131,11 @@ public class ApiHelperService {
         } else {
             System.out.println("No entries found on workspace" + checkForWorkspace() + ".");
         }
+    }
+
+    public static void editTimeEntry() {
+        String endpoint = "/workspaces/" + checkForWorkspace() + "/time-entries/667b2cb3e0efde0334f5a8f7";
+        String body = "{\"billable\": true,\"tagIds\": [], \"description\": \"tpFinalEditable\",  \"end\": \"2024-06-03T17:00:00Z\",  \"projectId\":\"6678aa474950065c0ad2fbed\",  \"start\": \"2024-06-03T08:00:00Z\"}";
+        sendPutRequest(endpoint,body);
     }
 }

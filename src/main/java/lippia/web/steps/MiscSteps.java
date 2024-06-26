@@ -2,15 +2,10 @@ package lippia.web.steps;
 
 import com.crowdar.core.PageSteps;
 import io.cucumber.java.en.*;
-import lippia.web.services.ApiHelperService;
 import lippia.web.services.MiscService;
+import lippia.web.services.TimetrackerService;
 
 public class MiscSteps extends PageSteps {
-
-    @And("create entries by api")
-    public void createEntriesByApi() {
-        ApiHelperService.setupTimeEntries();
-    }
 
     @And("the user clicks on Range to open the Calendar")
     public void theUserClicksOnRangeToOpenTheCalendar() throws InterruptedException {
@@ -37,8 +32,33 @@ public class MiscSteps extends PageSteps {
         MiscService.verifyLoaderPresence();
     }
 
-    @And("created entries are deleted by api")
-    public void createdEntriesAreDeletedByApi() {
-        ApiHelperService.cleanUpEntriesAfterTest();
+    @When("the user types (.*) over task description$")
+    public void theUserTypesTaskOverTaskDescription(String task) {
+        TimetrackerService.editProjectDescription(task);
     }
+
+    @And("the user clicks on the project picker")
+    public void theUserClicksOnTheProjectPicker() {
+    TimetrackerService.editProjectPicker();
+    }
+
+    @And("the user clicks on 'No project'")
+    public void theUserClicksOn() {
+        TimetrackerService.pickNullProject();
+    }
+    @And("the user clicks on the $ icon")
+    public void theUserClicksOnThe$Icon() {
+        TimetrackerService.toggleBillableEdit();
+    }
+    @And("the user edits the (.*) (.*) range$")
+    public void theUserEditsTheStartEndRange(String start,String end) {
+        TimetrackerService.editHourRange(start, end);
+    }
+
+    @And("the user selects new (.*)$")
+    public void theUserSelectsNewDate(String date) {
+        TimetrackerService.editTaskDate(date);
+    }
+
+
 }
