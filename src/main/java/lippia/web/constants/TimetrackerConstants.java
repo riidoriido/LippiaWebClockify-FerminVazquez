@@ -13,6 +13,6 @@ public class TimetrackerConstants {
     public static final String ENTRY_LIST_BILLABLE_SWITCH = "xpath://entry-group[1]//span[text()=' $ ']";
     public static final String ENTRY_LIST_START_EDIT = "xpath://entry-group[1]//input-time-ampm[1]/input";
     public static final String ENTRY_LIST_END_EDIT = "xpath://entry-group[1]//input-time-ampm[2]/input";
-    public static final String ENTRY_LIST_DATE_EDIT = "xpath://entry-group[1]//input-single-date";
+    public static final String ENTRY_LIST_DATE_EDIT = "xpath://entry-group[1]//input-single-date/span";
 
 }
